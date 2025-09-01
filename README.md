@@ -1,1 +1,240 @@
-# Railan
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfólio Futurista</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+    <style>
+        /* Estilos customizados para o tema futurista */
+        body {
+            font-family: 'Share Tech Mono', monospace;
+            background-color: #000;
+            color: #00f0ff;
+            overflow: hidden; /* Evita scrollbars indesejados */
+            background-image: url('https://images.unsplash.com/photo-1526374965328-5f61d4dc18c5?q=80&w=2070&auto=format&fit=crop');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+
+        /* Canvas para o fundo animado */
+        #matrix-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+        }
+
+        /* Container principal que ficará sobre o canvas */
+        .main-container {
+            position: relative;
+            z-index: 2;
+            perspective: 1000px;
+        }
+
+        /* Cartão de vidro com efeito de desfoque */
+        .glass-card {
+            background: rgba(10, 25, 47, 0.6);
+            backdrop-filter: blur(10px) saturate(120%);
+            -webkit-backdrop-filter: blur(10px) saturate(120%);
+            border: 1px solid rgba(0, 240, 255, 0.4);
+            transition: transform 0.1s ease-out;
+            box-shadow: 0 0 20px rgba(0, 240, 255, 0.2), 0 0 40px rgba(0, 240, 255, 0.1);
+            animation: fadeIn 1.5s ease-out forwards;
+        }
+
+        /* Título com estilo futurista */
+        h1, h2 {
+            font-family: 'Orbitron', sans-serif;
+            text-shadow: 0 0 5px #00f0ff, 0 0 10px #00f0ff, 0 0 15px #00f0ff;
+            animation: glitch 3s linear infinite;
+        }
+        
+        /* Animação de glitch para os títulos */
+        @keyframes glitch {
+            2%,64% { transform: translate(2px,0) skew(0deg); }
+            4%,60% { transform: translate(-2px,0) skew(0deg); }
+            62% { transform: translate(0,0) skew(5deg); }
+        }
+        
+        /* Estilo do cursor de digitação */
+        .typing-cursor {
+            display: inline-block;
+            width: 10px;
+            height: 1.2em;
+            background-color: #00f0ff;
+            animation: blink 0.7s infinite;
+            margin-left: 4px;
+        }
+
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
+        }
+
+        /* Efeito de brilho nos ícones de contato */
+        .contact-icon:hover svg {
+            filter: drop-shadow(0 0 8px #00f0ff);
+            transform: scale(1.1);
+        }
+        
+        /* Animação de entrada (fade in) */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body class="bg-black">
+
+    <canvas id="matrix-canvas"></canvas>
+
+    <div class="main-container min-h-screen w-full flex items-center justify-center p-4">
+        
+        <div class="glass-card rounded-2xl p-6 md:p-10 w-full max-w-4xl">
+            <!-- Cabeçalho com foto e título -->
+            <header class="flex flex-col sm:flex-row items-center text-center sm:text-left mb-8">
+                <img src="Gemini_Generated_Image_2m1y832m1y832m1y.jpg" alt="Foto do Perfil" class="w-32 h-32 md:w-40 md:h-40 rounded-full border-2 border-cyan-400 object-cover shadow-lg shadow-cyan-500/20 mb-4 sm:mb-0 sm:mr-8">
+                <div>
+                    <h1 class="text-3xl md:text-5xl font-bold text-white tracking-wider">RAILAN ALVES</h1>
+                    <p class="text-cyan-300 text-lg md:text-xl mt-2">Desenvolvedor | Criador de Soluções</p>
+                </div>
+            </header>
+
+            <!-- Seção Sobre -->
+            <section class="mb-8">
+                <h2 class="text-2xl md:text-3xl font-bold text-white mb-4">SOBRE MIM</h2>
+                <p id="about-text" class="text-cyan-200 leading-relaxed text-base md:text-lg"></p>
+            </section>
+
+            <!-- Seção Contatos -->
+            <section>
+                <h2 class="text-2xl md:text-3xl font-bold text-white mb-4">CONTATOS</h2>
+                <div class="flex items-center justify-center sm:justify-start space-x-6">
+                    <a href="mailto:seuemail@example.com" class="contact-icon text-cyan-300 hover:text-white transition-all duration-300">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+                        <span class="sr-only">Email</span>
+                    </a>
+                    <a href="#" class="contact-icon text-cyan-300 hover:text-white transition-all duration-300">
+                         <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"></path></svg>
+                        <span class="sr-only">GitHub</span>
+                    </a>
+                    <a href="#" class="contact-icon text-cyan-300 hover:text-white transition-all duration-300">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10" viewBox="0 0 24 24" fill="currentColor"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"></path></svg>
+                        <span class="sr-only">LinkedIn</span>
+                    </a>
+                </div>
+            </section>
+        </div>
+
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // --- EFEITO DE CHUVA DIGITAL NO CANVAS ---
+            const canvas = document.getElementById('matrix-canvas');
+            const ctx = canvas.getContext('2d');
+
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+
+            const letters = '01';
+            const fontSize = 16;
+            const columns = Math.floor(canvas.width / fontSize);
+            const drops = Array(columns).fill(1);
+
+            function drawMatrix() {
+                ctx.fillStyle = 'rgba(0, 0, 0, 0.05)';
+                ctx.fillRect(0, 0, canvas.width, canvas.height);
+                
+                ctx.fillStyle = '#00f0ff';
+                ctx.font = `${fontSize}px Share Tech Mono`;
+
+                for (let i = 0; i < drops.length; i++) {
+                    const text = letters[Math.floor(Math.random() * letters.length)];
+                    ctx.fillText(text, i * fontSize, drops[i] * fontSize);
+
+                    if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
+                        drops[i] = 0;
+                    }
+                    drops[i]++;
+                }
+            }
+
+            setInterval(drawMatrix, 40);
+            
+            window.addEventListener('resize', () => {
+                canvas.width = window.innerWidth;
+                canvas.height = window.innerHeight;
+                // Recalcula colunas e reseta gotas para evitar problemas de layout
+                const newColumns = Math.floor(canvas.width / fontSize);
+                drops.length = newColumns;
+                drops.fill(1);
+            });
+
+
+            // --- EFEITO DE INCLINAÇÃO DO CARTÃO ---
+            const card = document.querySelector('.glass-card');
+            const container = document.querySelector('.main-container');
+
+            container.addEventListener('mousemove', (e) => {
+                const {
+                    left,
+                    top,
+                    width,
+                    height
+                } = container.getBoundingClientRect();
+                const x = e.clientX - left;
+                const y = e.clientY - top;
+
+                const rotateX = -1 * ((y - height / 2) / (height / 2)) * 5;
+                const rotateY = ((x - width / 2) / (width / 2)) * 5;
+
+                card.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.02)`;
+            });
+
+            container.addEventListener('mouseleave', () => {
+                card.style.transform = 'rotateX(0deg) rotateY(0deg) scale(1)';
+            });
+
+            // --- EFEITO DE DIGITAÇÃO ---
+            const aboutTextElement = document.getElementById('about-text');
+            const textToType = "Sou um desenvolvedor apaixonado por tecnologia e design, sempre em busca de desafios que me permitam criar soluções inovadoras e eficientes. Minha missão é transformar ideias complexas em experiências digitais intuitivas e visualmente atraentes.";
+            let charIndex = 0;
+
+            function type(text) {
+                let currentText = text || textToType;
+                charIndex = 0;
+                aboutTextElement.innerHTML = '';
+                
+                function typeChar() {
+                    if (charIndex < currentText.length) {
+                        aboutTextElement.innerHTML = currentText.substring(0, charIndex + 1) + '<span class="typing-cursor"></span>';
+                        charIndex++;
+                        setTimeout(typeChar, 50);
+                    } else {
+                        aboutTextElement.innerHTML = currentText + '<span class="typing-cursor"></span>';
+                    }
+                }
+                typeChar();
+            }
+            
+            // Inicia a digitação após a animação de fade-in inicial
+            setTimeout(() => type(), 1500);
+        });
+    </script>
+</body>
+</html>
+
